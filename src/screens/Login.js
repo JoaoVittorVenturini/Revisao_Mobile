@@ -5,14 +5,10 @@ import PageBackground from "../components/PageBackground";
 import Logo from "../components/Logo";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import UserContext from "../contexts/UserContext";
-
-const [users] = useContext(UserContext);
 
 export default function Login({ navigation }) {
-  const validateLogin = () => {
-    const userLogin = users.filter(u => u.name == user)[0];
-    (userLogin.password == password)
+  const handleLogin = () => {
+    (user != 'dev' || password != 'dev')
       ? alert('User ou senha incorretos.')
       : navigation.navigate('Home');
   }
@@ -41,7 +37,7 @@ export default function Login({ navigation }) {
         </View>
 
         <Button text="Entrar"
-          onPress={validateLogin}
+          onPress={handleLogin}
           styleButton={styles.btnLogin}
           styleText={styles.btnLoginText}
         />
